@@ -2,15 +2,18 @@ const app = document.getElementById('root');
 
 var name;
 function check() {
+    // Clear the div 'root' when new keyword is input
     if (document.getElementById('root') !== null) {
         document.getElementById('root').innerHTML = "";
     }
     const container = document.createElement('div');
     container.setAttribute('class', 'container');
     app.appendChild(container);
+    
     name = document.getElementById('searchTxt').value;
-    console.log(name);
     const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name;
+    
+    // Fetching data from the cocktaildb API
     fetch(url)
         .then((resp) => resp.json())
         .then(function (resp) {
